@@ -1,0 +1,45 @@
+---
+// 巻きずし猫マスコット ── 海苔グリーンの巻き＋米（白）＋中の猫（サーモン・後ろ向き・顔なし）、
+// クリームの耳×2、右下に飛び出す尻尾。色は @theme トークン（var）で駆動。
+// 確定意匠は studio-yokonami#4 で清書予定。size で全体を等比スケールする。
+interface Props {
+  class?: string;
+  size?: number;
+}
+const { class: className = "", size = 150 } = Astro.props;
+const s = size / 150; // 150px 基準のスケール
+---
+
+<div
+  class={className}
+  aria-hidden="true"
+  style={`position:relative; width:${150 * s}px; height:${150 * s}px;`}
+>
+  {/* 耳 */}
+  <div
+    style={`position:absolute; top:${-14 * s}px; left:${34 * s}px; width:0; height:0; border-left:${15 * s}px solid transparent; border-right:${15 * s}px solid transparent; border-bottom:${26 * s}px solid var(--color-tr-cream); transform:rotate(-16deg);`}
+  >
+  </div>
+  <div
+    style={`position:absolute; top:${-14 * s}px; right:${34 * s}px; width:0; height:0; border-left:${15 * s}px solid transparent; border-right:${15 * s}px solid transparent; border-bottom:${26 * s}px solid var(--color-tr-cream); transform:rotate(16deg);`}
+  >
+  </div>
+  {/* 巻き本体（海苔→米→猫） */}
+  <div
+    style={`position:relative; width:${150 * s}px; height:${150 * s}px; border-radius:50%; background:var(--color-tr-nori); display:flex; align-items:center; justify-content:center; box-shadow:0 ${14 * s}px ${30 * s}px rgba(63,94,70,.28);`}
+  >
+    <div
+      style={`width:${114 * s}px; height:${114 * s}px; border-radius:50%; background:var(--color-tr-canvas); display:flex; align-items:center; justify-content:center;`}
+    >
+      <div
+        style={`width:${66 * s}px; height:${66 * s}px; border-radius:50%; background:var(--color-tr-salmon);`}
+      >
+      </div>
+    </div>
+  </div>
+  {/* 尻尾 */}
+  <div
+    style={`position:absolute; bottom:${-6 * s}px; right:${-30 * s}px; width:${74 * s}px; height:${30 * s}px; background:var(--color-tr-cream); border-radius:${30 * s}px ${30 * s}px ${30 * s}px ${4 * s}px; transform:rotate(28deg); box-shadow:0 ${6 * s}px ${14 * s}px rgba(42,36,32,.10);`}
+  >
+  </div>
+</div>

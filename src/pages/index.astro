@@ -1,0 +1,123 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+---
+
+<MainLayout title="tail-roll — ペットとの毎日を共有">
+  <!-- nav -->
+  <header class="bg-tr-canvas border-b border-tr-border sticky top-0 z-50">
+    <div class="mx-auto max-w-[1080px] px-7 py-3.5 flex items-center gap-4">
+      <a href="/" class="flex items-center gap-2.5 no-underline text-tr-ink">
+        <img src="/favicon.svg" width="34" height="34" alt="" />
+        <span class="font-black text-xl tracking-tight">tail-roll</span>
+      </a>
+      <div class="flex-1"></div>
+      <nav class="hidden sm:flex gap-2 text-sm font-bold">
+        <a href="#" class="text-tr-ink no-underline px-3.5 py-2 rounded-full">フィード</a>
+        <a href="#" class="text-tr-ink no-underline px-3.5 py-2 rounded-full">キャットラン</a>
+        <a href="#" class="text-tr-ink no-underline px-3.5 py-2 rounded-full">投稿</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- hero -->
+  <section class="mx-auto max-w-[1080px] px-7 pt-16 pb-10 flex items-center gap-12 flex-wrap">
+    <div class="flex-1 min-w-[300px]">
+      <div
+        class="inline-flex items-center font-extrabold text-[13px] px-3.5 py-1.5 rounded-full mb-5"
+        style="background:#FFF3E6; color:#E8852A;"
+      >
+        ペット写真SNS
+      </div>
+      <h1 class="text-5xl md:text-[54px] leading-[1.08] font-black tracking-tight mb-4">
+        人も部屋も隠して、<br />ペットだけ。
+      </h1>
+      <p class="text-lg leading-relaxed text-tr-ink-soft max-w-[440px] mb-7">
+        里親になった後の、ペットとの幸せな毎日を共有するSNS。映り込む顔も家具も、ぜんぶブラウザの中で隠してから。
+      </p>
+      <div class="flex gap-3 flex-wrap">
+        <a
+          href="#"
+          class="no-underline bg-tr-strawberry text-white font-extrabold text-base px-6 py-3.5 rounded-full shadow-candy"
+          >はじめる</a
+        >
+        <a
+          href="#"
+          class="no-underline bg-tr-surface text-tr-ink font-extrabold text-base px-6 py-3.5 rounded-full border border-tr-border"
+          >キャットランを見る →</a
+        >
+      </div>
+    </div>
+    <!-- 投稿が次々と積もる雰囲気：正方形の写真カードを扇状に重ねる（手前＝最新の投稿）。 -->
+    <div class="flex-none w-full sm:w-[420px]">
+      <div class="relative mx-auto aspect-square w-full max-w-[420px]">
+        <img
+          src="/hero-3.webp"
+          alt=""
+          loading="lazy"
+          class="absolute left-1/2 top-1/2 w-[60%] aspect-square object-cover rounded-[18px] border-4 border-white shadow-lift"
+          style="transform:translate(-58%,-46%) rotate(-12deg);"
+        />
+        <img
+          src="/hero-2.webp"
+          alt=""
+          loading="lazy"
+          class="absolute left-1/2 top-1/2 w-[60%] aspect-square object-cover rounded-[18px] border-4 border-white shadow-lift"
+          style="transform:translate(-42%,-52%) rotate(9deg);"
+        />
+        <img
+          src="/hero-4.webp"
+          alt=""
+          loading="lazy"
+          class="absolute left-1/2 top-1/2 w-[60%] aspect-square object-cover rounded-[18px] border-4 border-white shadow-lift"
+          style="transform:translate(-54%,-58%) rotate(-3deg);"
+        />
+        <img
+          src="/hero.webp"
+          alt="お部屋はぼかして、猫だけがくっきり主役の一枚"
+          class="absolute left-1/2 top-1/2 w-[62%] aspect-square object-cover rounded-[18px] border-4 border-white shadow-lift"
+          style="transform:translate(-48%,-48%) rotate(3deg);"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- privacy assurance -->
+  <section class="mx-auto max-w-[1080px] px-7 pb-8">
+    <div
+      class="inline-flex flex-col rounded-2xl px-5 py-3"
+      style="background:#E4FAF6; border:1.5px solid #B8EFE6;"
+    >
+      <div class="font-black text-[15px]" style="color:#138A79;">隠してから、公開する。</div>
+      <div class="text-xs font-bold mt-0.5" style="color:#3CA899;">
+        顔も部屋もブラウザの中で隠す。隠す前の写真は、端末の外に出ません。
+      </div>
+    </div>
+  </section>
+
+  <!-- coming features -->
+  <section class="mx-auto max-w-[1080px] px-7 pb-24">
+    <div class="grid gap-4" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));">
+      <div class="bg-tr-surface border border-tr-border rounded-card shadow-soft p-6">
+        <div class="w-8 h-1.5 rounded-full mb-4" style="background:var(--color-tr-strawberry);"></div>
+        <div class="font-black text-lg mb-1.5">顔隠しステッカー</div>
+        <p class="text-sm text-tr-ink-soft leading-relaxed">
+          映り込んだ人の顔に、ぽんとステッカー。自動で貼って、手で直せる。
+        </p>
+      </div>
+      <div class="bg-tr-surface border border-tr-border rounded-card shadow-soft p-6">
+        <div class="w-8 h-1.5 rounded-full mb-4" style="background:var(--color-tr-mint);"></div>
+        <div class="font-black text-lg mb-1.5">家具ぼかし</div>
+        <p class="text-sm text-tr-ink-soft leading-relaxed">
+          お部屋の映り込みは、ふわっとぼかして。生活感は、隠せる。
+        </p>
+      </div>
+      <div class="bg-tr-surface border border-tr-border rounded-card shadow-soft p-6">
+        <div class="w-8 h-1.5 rounded-full mb-4" style="background:var(--color-tr-lilac);"></div>
+        <div class="font-black text-lg mb-1.5">キャットラン</div>
+        <p class="text-sm text-tr-ink-soft leading-relaxed">
+          猫が現実で持てない“ラン”を、ここで。飼い主どうしの集いの場。
+        </p>
+      </div>
+    </div>
+  </section>
+</MainLayout>

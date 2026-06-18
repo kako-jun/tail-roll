@@ -1,0 +1,49 @@
+---
+// フォントは hanoba と同一（Zen Maru Gothic + Outfit を Google Fonts で読み込み）。global.css の --font-sans 参照。
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const SITE_DESCRIPTION =
+  "里親になった後の、ペットとの幸せな毎日を共有するSNS。映り込む顔も家具も、ブラウザの中で隠してから。";
+const { title = "tail-roll", description = SITE_DESCRIPTION } = Astro.props;
+
+// canonical / og:url は本番ドメイン（astro.config の site）＋現在パスの絶対 URL。
+const SITE = Astro.site ?? new URL("https://tail-roll.llll-ll.com");
+const canonical = new URL(Astro.url.pathname, SITE).href;
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="theme-color" content="#FF6B6B" />
+    <!-- タイポは hanoba と同一：Outfit（欧/数字）＋ Zen Maru Gothic（和文・丸ゴシック）を Google Fonts で。 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800;900&family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap"
+    />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <!-- @vite-pwa/astro は manifest を生成するが <link rel="manifest"> は注入しないため明示する。 -->
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <!-- Service Worker 登録（本番ビルドでのみ registerSW.js が生成される。dev では 404 で無害）。 -->
+    <script is:inline async src="/registerSW.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="tail-roll" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <title>{title}</title>
+  </head>
+  <body class="bg-tr-canvas text-tr-ink min-h-screen antialiased">
+    <slot />
+  </body>
+</html>

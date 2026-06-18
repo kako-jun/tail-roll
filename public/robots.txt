@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tail-roll.llll-ll.com/sitemap-index.xml

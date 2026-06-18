@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+/* =========================================================================
+   tail-roll デザインシステム ── 明るい今風SNS（session672 / claude.ai/design 生成）
+   ステッカー文化 ＋ 写真ファースト ＋ masonry 発見 のいいとこ取り。
+   値の正本は design/design-system.md・design/tailwind.tokens.mjs。
+   ここ（@theme）が実装の正本＝Tailwind ユーティリティを生成する。
+   ========================================================================= */
+@theme {
+  /* ベース */
+  --color-tr-canvas: #fffdf9; /* 背景（写真が映える明るいオフホワイト） */
+  --color-tr-surface: #ffffff; /* カード面 */
+  --color-tr-border: #f1e9dc; /* 境界線 */
+  --color-tr-ink: #2a2420; /* 文字（温かいニアブラック） */
+  --color-tr-ink-soft: #9a8e80; /* 補助テキスト */
+
+  /* キャンディ・アクセント（小面積の差し色・顔隠しステッカー兼用） */
+  --color-tr-strawberry: #ff6b6b;
+  --color-tr-sunny: #ffb23e;
+  --color-tr-mint: #2dd4bf;
+  --color-tr-lilac: #a78bfa;
+
+  /* マスコット（巻きずし猫）／ステッカー素体 */
+  --color-tr-nori: #3f5e46;
+  --color-tr-salmon: #ff8e72;
+  --color-tr-cream: #fbefd8;
+
+  /* タイポ：丸ゴシックで親しみを（英字 Nunito ／ 和文 M PLUS Rounded 1c） */
+  /* hanoba と同一：見出し＝Outfit（欧/数字）×和文＝Zen Maru Gothic（丸ゴシック）。 */
+  --font-sans:
+    "Zen Maru Gothic", "Outfit", ui-sans-serif, system-ui, "Hiragino Maru Gothic ProN",
+    "Noto Sans JP", sans-serif;
+
+  /* シェイプ */
+  --radius-chip: 12px;
+  --radius-card: 22px;
+  --radius-panel: 28px;
+
+  --shadow-soft: 0 4px 14px rgba(42, 36, 32, 0.06);
+  --shadow-lift: 0 10px 28px rgba(42, 36, 32, 0.1);
+  --shadow-candy: 0 8px 18px rgba(255, 107, 107, 0.3);
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-tr-ink);
+  background-color: var(--color-tr-canvas);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Tailwind v4 は <button> の既定カーソルを default に変えるため、操作可能要素に戻す。 */
+button:not(:disabled),
+[role="button"]:not([aria-disabled="true"]),
+label[for],
+summary {
+  cursor: pointer;
+}
+
+/* ステッカー／マスコットのポップなモーション（reduced-motion で停止）。 */
+@keyframes tr-pop {
+  0% {
+    transform: scale(0.6) rotate(-8deg);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.12) rotate(4deg);
+  }
+  100% {
+    transform: scale(1) rotate(0);
+    opacity: 1;
+  }
+}
+@keyframes tr-wiggle {
+  0%,
+  100% {
+    transform: rotate(-3deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+}
+@keyframes tr-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+.tr-float {
+  animation: tr-float 4s ease-in-out infinite;
+}
+.tr-wiggle {
+  animation: tr-wiggle 3s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tr-float,
+  .tr-wiggle {
+    animation: none;
+  }
+}
